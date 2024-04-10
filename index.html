@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laboratorio #2</title>
+</head>
+
+<body>
+  <h1>¿Qué es Javascript y en qué se asemeja a Java?</h1>
+  <p style="resultado"></p>
+  <script>
+    // Mostrar resultado en una etiqueta "p"
+    const textoInfo = `
+    JavaScript es un lenguaje de programación de alto nivel, interpretado y dinámico. Se utiliza principalmente para añadir interactividad a las páginas web, aunque también se puede utilizar para crear aplicaciones web del lado del servidor, aplicaciones móviles y mucho más.
+
+    Semejanzas con Java:
+
+    * Ambos son lenguajes de programación orientados a objetos.
+    * Comparten una sintaxis similar, aunque con algunas diferencias.
+    * Ambos se ejecutan en una máquina virtual (JVM para Java y V8 para JavaScript).
+
+    Diferencias:
+
+    * JavaScript es un lenguaje interpretado, mientras que Java es un lenguaje compilado.
+    * JavaScript es un lenguaje de tipado dinámico, mientras que Java es un lenguaje de tipado estático.
+    * JavaScript se utiliza principalmente para el desarrollo web del lado del cliente, mientras que Java se utiliza para una variedad de aplicaciones, incluyendo aplicaciones web del lado del servidor, aplicaciones móviles y aplicaciones de escritorio.
+    `;
+
+    const pResultado = document.getElementById("resultado");
+
+    pResultado.textContent = textoInfo;
+
+
+    // Declarar dos variables con var
+    var num1 = 10;
+    var num2 = 5;
+    console.log("Suma:", num1 + num2); // 15
+    console.log("Resta:", num1 - num2); // 5
+    console.log("Multiplicación:", num1 * num2); // 50
+    console.log("División:", num1 / num2); // 2
+
+    // Declarar dos variables con let
+    let nombre = "Juan";
+    let apellido = "Pérez";
+    console.log(nombre + " " + apellido);
+
+    // Declarar dos variables con const
+    const PI = 3.14159;
+    const EDAD = 25;
+    console.log(PI); // number
+    console.log(EDAD); // number
+
+    // Declarar una variable tipo Objeto
+    const persona = {
+      edad: 25,
+      nombre: "Juan Pérez",
+      soltero: true,
+      hobbies: {}
+    };
+    // Imprimir el objeto
+    console.log(persona);
+
+
+    // Función para sumar múltiplos de 3 y 5
+    function sumarMultiplos(numero) {
+      let suma = 0;
+      for (let i = 1; i < numero; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+          suma += i;
+        }
+      }
+      return suma;
+    }
+    // Ejemplo de uso
+    const resultado = sumarMultiplos(10);
+    console.log("Suma de múltiplos de 3 y 5 hasta 10:", resultado); // 23
+
+
+  </script>
+</body>
+
+</html>
+
+
+<!-- Fuentes: -->
