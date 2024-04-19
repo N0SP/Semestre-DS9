@@ -1,17 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laboratorio #3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+        }
+        h2 {
+            text-align: center;
+        }
+        .problem {
+            margin-bottom: 20px;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 10px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
-<style>
 
-</style>
 <body>
-    
+    <div class="container">
+        <h2>Laboratorio #3</h2>
+
+        <!-- Problema 1 -->
+        <div class="problem">
+            <h3>Problema 1: Verificar palíndromo en base 10 y base 2</h3>
+            <input type="text" id="inputpa" placeholder="Ingrese un número...">
+            <button onclick="verificarPalindrome()">Verificar</button>
+            <div id="resultPalindrome" class="result"></div>
+        </div>
+
+        <!-- Problema 2 -->
+        <div class="problem">
+            <h3>Problema 2: Contar caracteres en una cadena</h3>
+            <input type="text" id="inputCharacters" placeholder="Ingrese una cadena...">
+            <button onclick="contarChars()">Contar</button>
+            <div id="resultCharacters" class="result"></div>
+        </div>
+
+        <!-- Problema 3 -->
+        <div class="problem">
+            <h3>Problema 3: Verificar si un año es bisiesto</h3>
+            <input type="number" id="inputLeapYear" placeholder="Ingrese un año...">
+            <button onclick="verificarLeapYear()">Verificar</button>
+            <div id="resultLeapYear" class="result"></div>
+        </div>
+
+        <!-- Problema 4 -->
+        <div class="problem">
+            <h3>Problema 4: Sumar primos debajo de un número</h3>
+            <input type="number" id="inputSumPrimes" placeholder="Ingrese un número...">
+            <button onclick="sumarPrimes()">Sumar</button>
+            <div id="resultSumPrimes" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        ////////////////////////// Problema 1 ////////////////////////////
+        function verificarPalindrome() {
+            const input = document.getElementById('inputpa').value;
+            const esPalindromo = palindrome(input);
+            const resultDiv = document.getElementById('resultPalindrome');
+            
+            if (esPalindromo) {
+                resultDiv.textContent = `El número ${input} es palíndromo en base 10 y base 2.`;
+            } else {
+                resultDiv.textContent = `El número ${input} no es palíndromo en base 10 ni en base 2.`;
+            }
+        }
+        
+        function palindrome(t) {
+            const num = parseInt(t, 10);
+        
+            // Función para verificar si una cadena es un palíndromo
+            function esPalindrome(str) {
+                const len = str.length;
+                for (let i = 0; i < len / 2; i++) {
+                    if (str[i] !== str[len - i - 1]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            // Verificar si es palíndromo en base 10
+            const strBase10 = num.toString();
+            const esBase10Palindrome = esPalindrome(strBase10);
+        
+            // Verificar si es palíndromo en base 2
+            const strBase2 = num.toString(2);
+            const esBase2Palindrome = esPalindrome(strBase2);
+        
+            return esBase10Palindrome && esBase2Palindrome;
+        }
+
+        ////////////////////////// Problema 2 ////////////////////////////
+        function contarChars() {
+            const input = document.getElementById('inputCharacters').value;
+            const counts = contarCaracteres(input);
+            const resultDiv = document.getElementById('resultCharacters');
+            
+            let resultText = '';
+            for (const [char, count] of Object.entries(counts)) {
+                resultText += `El carácter "${char}" aparece ${count} veces.\n`;
+            }
+            resultDiv.textContent = resultText;
+        }
+
+        function contarCaracteres(t) {
+            const counts = {};
+            
+            for (let i = 0; i < t.length; i++) {
+                const char = t[i];
+                counts[char] = (counts[char] || 0) + 1;
+            }
+            
+            return counts;
+        }
+
+        ////////////////////////// Problema 3 ////////////////////////////
+        function verificarLeapYear() {
+            const year = parseInt(document.getElementById('inputLeapYear').value, 10);
+            const resultDiv = document.getElementById('resultLeapYear');
+            
+            if (esBisiesto(year)) {
+                resultDiv.textContent = `El año ${year} es bisiesto.`;
+            } else {
+                resultDiv.textContent = `El año ${year} no es bisiesto.`;
+            }
+        }
+
+        function esBisiesto(year) {
+            if (year % 4 === 0) {
+                if (year % 100 === 0 && year % 400 !== 0) {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        ////////////////////////// Problema 4 ////////////////////////////
+        function sumarPrimes() {
+            const input = parseInt(document.getElementById('inputSumPrimes').value, 10);
+            const suma = sumarPrimos(input);
+            const resultDiv = document.getElementById('resultSumPrimes');
+            
+            resultDiv.textContent = `La suma de todos los primos debajo de ${input} es ${suma}.`;
+        }
+
+        function sumarPrimos(n) {
+        let suma = 0;
+        const esPrimo = Array(n + 1).fill(true);
+
+        esPrimo[0] = esPrimo[1] = false; // 0 y 1 no son primos
+
+        // Usar la criba de Eratóstenes para identificar los números primos
+        for (let i = 2; i * i <= n; i++) {
+            if (esPrimo[i]) {
+                for (let j = i * i; j <= n; j += i) {
+                    esPrimo[j] = false;
+                }
+            }
+        }
+
+        // Sumar los números primos menores o iguales a `n`
+        for (let i = 2; i <= n; i++) {
+            if (esPrimo[i]) {
+                suma += i;
+            }
+        }
+
+    return suma;
+}
+    </script>
 </body>
-<script>
-    
-</script>
+
 </html>
