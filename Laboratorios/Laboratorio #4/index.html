@@ -59,9 +59,9 @@
 
 </body>
 <script>
-    const formulario = document.getElementById('formulario');
-    const numeroInput = document.getElementById('numero');
-    const tarjetasContenedor = document.getElementById('tarjetas');
+ const formulario = document.getElementById('formulario');
+const numeroInput = document.getElementById('numero');
+const tarjetasContenedor = document.getElementById('tarjetas');
 
 formulario.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -79,11 +79,14 @@ formulario.addEventListener('submit', (event) => {
 function crearTarjetaHTML(indice, numero) {
     const tarjeta = document.createElement('div');
     tarjeta.classList.add('tarjeta');
+    tarjeta.addEventListener('click', () => {
+        const confirmarEliminacion = confirm(`¿Desea eliminar la tarjeta ${indice + 1}?`);
+        if (confirmarEliminacion) {
+            tarjetasContenedor.removeChild(tarjeta);
+        }
+    });
 
-    const titulo = document.createElement('h3');
-    tarjeta.appendChild(titulo);
-
-    const valor = document.createElement('p');
+    const valor = document.createElement('h3');
     valor.textContent = numero;
     tarjeta.appendChild(valor);
 
@@ -91,7 +94,7 @@ function crearTarjetaHTML(indice, numero) {
 }
 
 function generarTarjetasFibonacci(numero) {
-    // Inicializar variables
+    
     let fibonacciAnterior = 0;
     let fibonacciActual = 1;
     let indice = 1;
