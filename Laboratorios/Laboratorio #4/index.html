@@ -1,0 +1,116 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secuencia Fibonacci</title>
+<style>
+.tarjeta {
+    display: inline-block;
+    width: 39px;
+    margin: 8px;
+    padding: 1px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+#tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+
+}
+#formulario{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: auto;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 50px;
+    background-color: #f0f0f0;
+}
+#boton{
+
+    background-color: #f59494;
+    border-radius: 5px 5px 5px 5px;
+
+}
+</style>
+</head>
+<body>
+    <section id="form">
+    <form id="formulario">
+        <h3>Secuencia Fibonacci</h3>
+        <label for="numero">Cantidad de elementos:</label>
+        <input type="number" id="numero" min="1" required>
+        <button type="submit" id="boton">Generar tarjetas</button>
+    </form>
+</section>
+    <div id="tarjetas"></div>
+
+</body>
+<script>
+    const formulario = document.getElementById('formulario');
+    const numeroInput = document.getElementById('numero');
+    const tarjetasContenedor = document.getElementById('tarjetas');
+
+formulario.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const numero = parseInt(numeroInput.value);
+
+    if (isNaN(numero) || numero < 1) {
+        alert('Error: Ingrese un número entero positivo.');
+        return;
+    }
+
+    generarTarjetasFibonacci(numero);
+});
+
+function crearTarjetaHTML(indice, numero) {
+    const tarjeta = document.createElement('div');
+    tarjeta.classList.add('tarjeta');
+
+    const titulo = document.createElement('h3');
+    tarjeta.appendChild(titulo);
+
+    const valor = document.createElement('p');
+    valor.textContent = numero;
+    tarjeta.appendChild(valor);
+
+    return tarjeta;
+}
+
+function generarTarjetasFibonacci(numero) {
+    // Inicializar variables
+    let fibonacciAnterior = 0;
+    let fibonacciActual = 1;
+    let indice = 1;
+
+    // Limpiar contenedor de tarjetas existentes
+    tarjetasContenedor.innerHTML = '';
+
+    const tarjeta0 = crearTarjetaHTML(0, 0);
+    tarjetasContenedor.appendChild(tarjeta0);
+
+    while (fibonacciActual < numero) {
+        const tarjeta = crearTarjetaHTML(indice, fibonacciActual);
+        tarjetasContenedor.appendChild(tarjeta);
+
+        const fibonacciSiguiente = fibonacciAnterior + fibonacciActual;
+        fibonacciAnterior = fibonacciActual;
+        fibonacciActual = fibonacciSiguiente;
+        indice++;
+    }
+}
+</script>
+</html>
