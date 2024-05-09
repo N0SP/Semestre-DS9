@@ -7,21 +7,53 @@
     <link href="style.css" rel="stylesheet" />
 </head>
 <body>
-    <section>
+    <section class="body">
         <div class="title"><h1>ELECCIONES GENERAL 2024</h1></div>
-        <form>
+        <form id="registrar-form">
             <label for="name">Nombre del Candidato:</label>
-            <input id="name" type="text" name="name" />
-            <label for="name">Partido</label>
-            <select name="partido" required>
+            <input id="name" type="text" name="name" required />
+            <label for="partido">Partido:</label>
+            <select name="partido" id="partido-select">
                 <option value="MOCA">Movimiento Otro Camino (MOCA)</option>
-                <opiton value="RM">Realizando Metas (RM)</opiton>
-                <option value="PRD">Partido Revolucionario Democratico (PRD)</option>
-                <opntion value="PP">Partido Popular</opntion>
-                <option value="CD">Cambio Democratico</option>
-                <option value="LB">Libre Postulacion</option>
+                <option value="RM">Realizando Metas (RM)</option>
+                <option value="PRD">Partido Revolucionario Democrático (PRD)</option>
+                <option value="PP">Partido Popular (PP)</option>
+                <option value="CD">Cambio Democrático (CD)</option>
+                <option value="LB">Libre Postulación (LP)</option>
             </select>
+            <button type="submit">Registrar</button>
+        </form>
+        <section class="table">
+            <table id="candidatos-table">
+                <thead>
+                    <tr>
+                        <th>Candidatos</th>
+                        <th>Partido</th>
+                        <th>Votos</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </section>
+    </section>
+    <section class="Agregar_puntos">
+        <div class="title"><h1>AGREGAR PUNTOS A CANDIDATOS</h1></div>
+        <form id="agregar-puntos-form">
+            <label for="cand">Seleccione al candidato:</label>
+            <select name="cand" id="cand-select">
+                <!-- Aquí se llenarán dinámicamente los nombres de los candidatos -->
+            </select>
+            <label for="num">Escriba el número de votos a agregar:</label>
+            <input id="num" type="number" name="num" required>
+            <button type="submit">Agregar</button>
         </form>
     </section>
+    <section class="Progress_pie">
+        <!-- Aquí se mostrarán las barras de progreso -->
+    </section>
+    <script src="app.js"></script>
 </body>
 </html>

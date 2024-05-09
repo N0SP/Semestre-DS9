@@ -3,4 +3,37 @@
 
     display: flex;
     justify-content: center;
+    margin: 25px;
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.table{
+    margin: 3rem;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f0f0f0;
+  }
