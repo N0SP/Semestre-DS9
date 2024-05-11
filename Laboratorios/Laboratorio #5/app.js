@@ -1,106 +1,101 @@
 (() => {
     const App = {
         candidatos: [],
+        coloresPorCandidato: new Map(),
 
         init() {
-            this.registrarFormulario = document.querySelector('form');
+            this.registrarFormulario = document.querySelector('#registrar-form');
             this.registrarFormulario.addEventListener('submit', this.registrarCandidato.bind(this));
 
             this.agregarPuntosFormulario = document.querySelector('#agregar-puntos-form');
             this.agregarPuntosFormulario.addEventListener('submit', (event) => {
-                event.preventDefault(); // Aquí se maneja el evento
-                const nombreCandidato = document.querySelector('#cand-select').value;
+                event.preventDefault();
+                const { value: nombreCandidato } = document.querySelector('#cand-select');
                 const cantidadVotos = parseInt(document.querySelector('#num').value);
-                this.agregarPuntos(nombreCandidato, cantidadVotos);
+                this.agregarVotos(nombreCandidato, cantidadVotos);
             });
         },
 
         registrarCandidato(event) {
             event.preventDefault();
-            const nombre = document.querySelector('#name').value;
-            const partido = document.querySelector('#partido-select').value;
+            const { value: nombre } = document.querySelector('#name');
+            const { value: partido } = document.querySelector('#partido-select');
             this.agregarCandidato(nombre, partido);
             this.actualizarTabla();
         },
 
         agregarCandidato(nombre, partido) {
             this.candidatos.push({ nombre, partido, votos: 0 });
+            const color = this.generateUniqueRandomColor();
+            this.coloresPorCandidato.set(nombre, color);
         },
 
         actualizarTabla() {
             const tabla = document.querySelector('#candidatos-table tbody');
             tabla.innerHTML = '';
-        
-            // Limpiamos y actualizamos las opciones del select para agregar votos
             const selectCandidatos = document.getElementById('cand-select');
             selectCandidatos.innerHTML = '';
+            
             this.candidatos.forEach(candidato => {
-                const option = document.createElement('option');
-                option.value = candidato.nombre;
-                option.textContent = candidato.nombre;
-                selectCandidatos.appendChild(option);
-            });
-        
-            this.candidatos.forEach((candidato, index) => {
+                const option = new Option(candidato.nombre, candidato.nombre);
+                selectCandidatos.add(option);
+                
                 const row = tabla.insertRow();
-                row.setAttribute('id', `candidato-${candidato.nombre}`); // Usamos el nombre del candidato como identificador único
+                row.id = `candidato-${candidato.nombre}`;
+                const color = this.coloresPorCandidato.get(candidato.nombre);
                 row.innerHTML = `
                     <td>${candidato.nombre}</td>
                     <td>${candidato.partido}</td>
                     <td>
-                        <div class="progress-bar" style="width: ${candidato.porcentaje}%;"></div>
-                        ${candidato.votos} (${candidato.porcentaje}%)
+                        <div class="progress-bar" style="width: ${candidato.porcentaje || 0}%; background-color: ${color};"></div>
+                        ${candidato.votos} (${candidato.porcentaje || 0}%)
                     </td>
                     <td><button class="eliminar-btn" data-candidato="${candidato.nombre}">Eliminar</button></td>
                 `;
             });
-        
-            // Asignar evento de clic a los botones "Eliminar" después de insertar todas las filas
-            const eliminarBtns = document.querySelectorAll('.eliminar-btn');
-            eliminarBtns.forEach(btn => {
+            
+            document.querySelectorAll('.eliminar-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
                     const nombreCandidato = btn.getAttribute('data-candidato');
                     this.eliminarCandidato(nombreCandidato);
                 });
             });
         },
-        
 
         eliminarCandidato(nombre) {
             this.candidatos = this.candidatos.filter(candidato => candidato.nombre !== nombre);
+            this.coloresPorCandidato.delete(nombre);
             this.actualizarTabla();
             this.actualizarPorcentajes();
         },
 
-        agregarPuntos(event) {
-            event.preventDefault();
-            const nombreCandidato = document.querySelector('#cand-select').value;
-            const cantidadVotos = parseInt(document.querySelector('#num').value);
-            this.agregarPuntos(nombreCandidato, cantidadVotos);
+        agregarVotos(nombreCandidato, cantidadVotos) {
+            const candidato = this.candidatos.find(c => c.nombre === nombreCandidato);
+            if (candidato) {
+                candidato.votos += cantidadVotos;
+                this.actualizarPorcentajes();
+                this.actualizarTabla();
+            }
         },
 
         actualizarPorcentajes() {
             const totalVotos = this.candidatos.reduce((total, candidato) => total + candidato.votos, 0);
             this.candidatos.forEach(candidato => {
-                candidato.porcentaje = (candidato.votos / totalVotos) * 100 || 0; // Evitar división por cero
+                candidato.porcentaje = ((candidato.votos / totalVotos) * 100 || 0).toFixed(2);
             });
-            this.actualizarBarrasDeProgreso();
         },
 
-        actualizarBarrasDeProgreso() {
-            const maxPorcentaje = Math.max(...this.candidatos.map(candidato => candidato.porcentaje));
-            const barWidthMultiplier = 100 / maxPorcentaje;
-            this.candidatos.forEach(candidato => {
-                const row = document.querySelector(`#candidato-${candidato.nombre}`);
-                if (row) {
-                    const progressCell = row.querySelector('.progress-cell');
-                    if (progressCell) {
-                        progressCell.innerHTML = `<div class="progress-bar" style="width: ${candidato.porcentaje * barWidthMultiplier}%;"></div>`;
-                    }
+        generateUniqueRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color;
+            do {
+                color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
                 }
-            });
+            } while (Array.from(this.coloresPorCandidato.values()).includes(color));
+            return color;
         }
-
     };
 
     App.init();
