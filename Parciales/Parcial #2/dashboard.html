@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="profile.html">Perfil</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><button id="logout_button" class="nav-button">Cerrar sesión</button></li>
+            </ul>
+        </nav>
+        <h1 style="margin:4rem;">Dashboard de <span id="username_display"></span></h1>
+    </header>
+    <div class="container-profile">
+        <section class="section-profile">
+            <h2>Agregar Transacción</h2>
+            <form id="transaction_form">
+                <label for="transaction_type">Tipo:</label>
+                <select id="transaction_type" name="transaction_type" required>
+                    <option value="Entrada">Entrada</option>
+                    <option value="Salida">Salida</option>
+                </select>
+                <label for="transaction_amount">Monto:</label>
+                <input type="number" id="transaction_amount" name="transaction_amount" required>
+                <button type="submit" class="button">Agregar</button>
+            </form>
+        </section>
+        <section class="section-profile">
+            <h2>Transacciones</h2>
+            <table id="transactions_table">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las transacciones se agregarán aquí -->
+                </tbody>
+            </table>
+        </section>
+        <section class="section-profile">
+            <h2>Gráfico</h2>
+            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+        </section>
+    </div>
+
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="src/session.js"></script>
+    <script src="src/dashboard.js"></script>
+</body>
+</html>
