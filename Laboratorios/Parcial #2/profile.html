@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="profile.html">Perfil</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><button id="logout_button" class="nav-button">Cerrar sesión</button></li>
+        </ul>
+    </nav>
+    <h1 style="margin:4rem;">Perfil de Usuario</h1>
+</header>
+  <div class="container-profile">
+    <section class="section-profile">
+    <div class="profile-form">
+      <header>Editar perfil de <span id="username_display"></span></header>
+      <div id="alert_profile" class="alert"></div>
+      <form id="form_profile">
+        <input type="text" name="nickname" placeholder="Nombre" value="" />
+        <input type="password" name="password" placeholder="Nueva Contraseña" value="" />
+        <input type="submit" class="button" value="Actualizar">
+      </form>
+    </div>
+</section>
+  </div>
+  <script src="src/session.js"></script>
+  <script src="src/profile.js"></script>
+</body>
+</html>
