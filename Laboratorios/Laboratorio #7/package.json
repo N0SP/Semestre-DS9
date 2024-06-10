@@ -1,0 +1,11 @@
+{
+  "name": "lab7",
+  "module": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
