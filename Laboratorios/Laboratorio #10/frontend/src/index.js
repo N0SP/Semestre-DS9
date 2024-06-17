@@ -20,22 +20,32 @@
             App.htmlElement.formRegister.addEventListener('submit', App.handlers.onRegisterSubmit);
         },
         handlers: {
-            onLoginSubmit(event) {
+            async onLoginSubmit(event) {
                 event.preventDefault();
-                const { username, password } = event.target.elements;
-                if (!Session.login(username.value, password.value)) {
-                    App.showAlert(App.htmlElement.alertLogin, 'Credenciales incorrectas', 'error');
+                const username = event.target.elements.username.value;
+                const password = event.target.elements.password.value;
+            
+                const result = await Session.login(username, password);
+                if (result.success) {
+                } else {
+                    App.showAlert(App.htmlElement.alertLogin, result.message, 'error');
                 }
             },
-        onRegisterSubmit(event) {
+            
+            async onRegisterSubmit(event) {
                 event.preventDefault();
-                const { username, nickname, password } = event.target.elements;
-                if (Session.register(username.value, nickname.value, password.value)) {
+                const username = event.target.elements.username.value;
+                const name = event.target.elements.name.value;
+                const password = event.target.elements.password.value;
+            
+                const result = await Session.register(username, name, password);
+                if (result.success) {
                     App.showAlert(App.htmlElement.alertRegister, 'Usuario registrado con éxito', 'success');
                 } else {
-                    App.showAlert(App.htmlElement.alertRegister, 'El usuario ya existe', 'error');
+                    App.showAlert(App.htmlElement.alertRegister, result.message, 'error');
                 }
             },
+            
         },
         showAlert(element, message, type) {
             if (element) {
