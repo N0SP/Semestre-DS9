@@ -26,7 +26,7 @@
                 const { nickname, password } = event.target.elements;
                 const user = await Session.getUser();
             
-                if (nickname.value) user.nombre = nickname.value;
+                if (nickname.value) user.name = nickname.value;
                 if (password.value) user.password = hashCode(password.value);
             
                 if (await Session.updateUser(user)) {
@@ -36,7 +36,7 @@
                 }
                 event.target.reset();
             },
-            
+        
             onLogout() {
                 Session.clearActiveSession();
                 window.location.href = 'index.html';
@@ -46,12 +46,12 @@
         async loadUserProfile() {
             console.log("Fetching user from session...");
             const user = await Session.getUser();
-            console.log("User fetched:", user.nombre);
+            console.log("User fetched:", user.username);
             try {
                 const user = await Session.getUser();
                 if (user) {
-                    this.htmlElement.usernameDisplay.textContent = user.usuario;
-                    this.htmlElement.formProfile.nickname.value = user.nombre;
+                    this.htmlElement.usernameDisplay.textContent = user.username;
+                    this.htmlElement.formProfile.nickname.value = user.name;
                 } else {
                     throw new Error('No se pudo cargar el perfil del usuario');
                 }

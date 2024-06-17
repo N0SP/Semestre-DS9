@@ -20,8 +20,8 @@ const Session = {
             const data = await response.json();
     
             if (response.ok && data.loggedIn) {
-                sessionStorage.setItem('sessionToken', data.token); 
-                Session.setActiveSession(username);
+                sessionStorage.setItem('sessionToken', data.token);
+                Session.setActiveSession(data.token);
                 window.location.href = 'profile.html';
                 return { success: true };
             } else {
@@ -51,40 +51,33 @@ const Session = {
         }
     },    
     
-    
-    async getUsers() {
-        const options = { 
-            method: 'GET', 
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        };
-        const response = await fetch('http://localhost:3000/api/usuarios', options);
-        const data = await response.json();
-        return data;
-    },
-
     async updateUser(user) {
         const options = {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem('sessionToken')}`
             },
             body: JSON.stringify({
-                nombre: user.nombre,
+                nombre: user.name,
                 password: user.password 
             })
         };
-        const response = await fetch(`http://localhost:3000/api/usuarios/${user.usuario}`, options);
+        const response = await fetch(`http://localhost:3000/api/usuarios/${user.userId}`, options);
         return response.ok;
     },
+    
 
     getActiveSession() {
         return sessionStorage.getItem('sessionToken');
     },
 
     getAuthHeaders() {
-        const token = Session.getActiveSession(); 
+        const token = Session.getActiveSession();
+        if (!token) {
+            console.error("El token no esta disponible");
+            return {};
+        }
         return {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -102,11 +95,28 @@ const Session = {
         return !!this.getActiveSession();
     },
     async getUser() {
-        const username = this.getActiveSession();
-        const users = await this.getUsers();
-        const user = users.find(user => user.usuario === username);
-        return user;
+        const authHeaders = this.getAuthHeaders();
+        try {
+            const response = await fetch('http://localhost:3000/api/profile', {
+                method: 'GET',
+                headers: authHeaders
+            });
+            if (response.ok) {
+                const user = await response.json();
+                return {
+                    userId: user.userId,
+                    name: user.name,
+                    username: user.username
+                };
+            } else {
+                throw new Error('Failed to fetch user profile');
+            }
+        } catch (error) {
+            console.error('Error fetching user profile:', error);
+            return null;
+        }
     }
+        
 
     
 };  
