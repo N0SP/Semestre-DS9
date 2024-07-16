@@ -1,0 +1,53 @@
+@import '../../../styles.scss';
+
+.card-footer {
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+p-card {
+    text-align: center;
+}
+
+span {
+    font-family: 'Karma-Bold';
+    font-size: 1.5rem;
+    color: $morado;
+}
+
+button {
+    background-color: $rosado;
+    font-family: 'Karma-Regular';
+    font-size: 1.125rem;
+}
+
+img {
+    object-fit: cover;
+    height: 250px;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Karma-Regular';
+    font-size: 1.3rem;
+    margin-top: 1rem;
+
+    fa-icon {
+        margin-right: 0.5rem;
+        color: $dorado;
+    }
+
+}
+
+::ng-deep .p-card-title, p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+::ng-deep .p-card-content {
+    padding: 0;
+}

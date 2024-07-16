@@ -1,0 +1,67 @@
+<section class="form-container">
+    <h1>Información del Evento</h1>
+    <form>
+        <section class="flex justify-between flex-wrap">
+            <div>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" [value]="event.Nombre" disabled />
+            </div>
+
+            <div>
+                <label for="nombre">Lugar</label>
+                <input type="text" name="lugar" id="lugar" [value]="event.Lugar" disabled />
+            </div>
+
+            <div>
+                <label for="dia-inicio">Dia - Hora de inicio</label>
+                <input type="text" name="dia-inicio" id="dia-inicio" [value]="event.Dia_Hora_Inicio" disabled />
+            </div>
+
+            <div>
+                <label for="dia-final">Dia - Hora de finalización</label>
+                <input type="text" name="dia-final" id="dia-final" [value]="event.Dia_Hora_Final" disabled />
+            </div>
+        </section>
+
+        <section class="flex flex-wrap description-img-bolets">
+            <div class="description">
+                <label for="detalles">Descripción</label>
+                <textarea name="detalles" id="detalles" disabled>{{ event.Detalles }}</textarea>
+            </div>
+            <div class="img">
+                <label for="foto">Foto</label>
+                <img *ngIf="!loading" [src]="event.Foto" alt="Foto del evento" />
+                <p-skeleton *ngIf="loading" shape="rectangle" width="338px" height="238px" class="mb-2"></p-skeleton>
+            </div>
+            <div class="bolets">
+                <label for="boletos">Boletos</label>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="px-3 py-3">Nombre</th>
+                            <th scope="col" class="px-3 py-3">Cantidad</th>
+                            <th scope="col" class="px-3 py-3">Precio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="loading">
+                            <td><p-skeleton styleClass="mb-2"></p-skeleton></td>
+                            <td><p-skeleton styleClass="mb-2"></p-skeleton></td>
+                            <td><p-skeleton styleClass="mb-2"></p-skeleton></td>
+                        </tr>
+                        <tr *ngFor="let boleto of boletos">
+                            <td>{{ boleto.Seccion }}</td>
+                            <td>{{ boleto.Cantidad }}</td>
+                            <td>{{ boleto.Precio }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </form>
+
+    <section class="buttons">
+        <button type="button" (click)="statusEvent('rejected', event.ID)" class="btn-rojo mr-1">Rechazar</button>
+        <button type="button" (click)="statusEvent('approved', event.ID)" class="btn-verde ml-1">Aprobar</button>
+    </section>
+</section>

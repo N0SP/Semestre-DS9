@@ -1,0 +1,25 @@
+<div class="contenedor">
+  <div class="formulario">
+    <h1 class="text-center mb-5">Iniciar Sesión</h1>
+
+    <form (submit)="onSubmit()" method="post">
+      <div>
+        <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Correo electrónico</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email"
+          class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5" />
+      </div>
+
+      <div>
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Contraseña</label>
+        <div class="relative">
+          <input type="password" id="password" name="password" [(ngModel)]="password" #passwordInput class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-full pr-10" />
+          <fa-icon [icon]="passwordVisible ? faEye : faEyeSlash" (click)="viewPassword(passwordInput)" class="absolute top-1-2 transform -translate-y-1/2 right-3 cursor-pointer"></fa-icon>
+        </div>        
+      </div>
+
+      <button type="submit"
+        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Enviar</button>        
+    </form>
+    <label class="lbl-register">¿Aún no tienes tu cuenta? <a href="/register">Registrate aquí</a></label>
+  </div>  
+</div>

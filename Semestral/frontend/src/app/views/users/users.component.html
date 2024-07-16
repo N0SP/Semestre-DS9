@@ -1,0 +1,37 @@
+<section class="contenedor">
+    <section class="title">
+        <h1 class="mb-5 mt-5">Lista de usuarios</h1>
+    </section>
+
+    <section class="tabla m-2.5">
+        <p-table [value]="listaUsuarios" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="border px-4 py-2">ID</th>
+                    <th class="border px-4 py-2">Nombre</th>
+                    <th class="border px-4 py-2">Apellido</th>
+                    <th class="border px-4 py-2">Correo</th>
+                    <th class="border px-4 py-2">Rol</th>
+                    <th class="border px-4 py-2">Acciones</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuarios>
+                <tr>
+                    <td class="border px-4 py-2">{{ usuarios.ID }}</td>
+                    <td class="border px-4 py-2">{{ usuarios.Nombre }}</td>
+                    <td class="border px-4 py-2">{{ usuarios.Apellido }}</td>
+                    <td class="border px-4 py-2">{{ usuarios.Correo }}</td>
+                    <td class="border px-4 py-2">
+                        @if(usuarios.ID_RolUsuario === 1) { Administrador }
+                        @if(usuarios.ID_RolUsuario === 2) { Regular }
+                        @if(usuarios.ID_RolUsuario === 3) { Promotor }
+                    </td>
+                    <td class="border px-4 py-2">
+                    <button class="btn-rojo" (click)="eliminarUsuario(usuarios.ID)"><fa-icon [icon]="faTrash"></fa-icon></button>
+                    <button></button>
+                   </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </section>
+</section>

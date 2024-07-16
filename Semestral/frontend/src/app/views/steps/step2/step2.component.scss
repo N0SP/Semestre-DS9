@@ -1,0 +1,40 @@
+.form-container {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 12rem;
+  overflow: auto;
+}
+
+.form-container label {
+  font-family: 'Karma-SemiBold';
+  display: block;
+  font-size: 1.25rem;
+
+  width: max-content;
+}
+
+.form-container div input,
+.form-container div select {
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-container div label {
+  font-family: 'Karma-SemiBold';
+  font-size: 1.25rem;
+}
+
+.form-container div label span {
+  font-family: 'Karma-Regular';
+  font-size: 1.25rem;
+}

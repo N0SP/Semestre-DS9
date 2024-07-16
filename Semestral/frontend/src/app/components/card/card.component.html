@@ -1,0 +1,22 @@
+<p-card [header]="Nombre" [style]="{ width: '360px' }">
+  <ng-template pTemplate="header">
+    <img [alt]="Nombre" [src]="Foto" [style]="{ heigth: '360px' }"/>
+  </ng-template>
+  <hr>
+  <div class="location">
+    <fa-icon [icon]="faLocationDot" class="fa-location-dot"></fa-icon>
+    <p>{{ Lugar }}</p>
+  </div>
+  <ng-template pTemplate="footer">
+    <div class="flex gap-3 mt-1 card-footer">
+      <span>{{ Dia_Hora_Inicio }}</span>
+
+        <button 
+        [disabled]="disabled"
+        class="text-white rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+        [class.opacity-50]="disabled"        
+        (click)="buyEvent()">Comprar</button>
+
+    </div>
+  </ng-template>
+</p-card>

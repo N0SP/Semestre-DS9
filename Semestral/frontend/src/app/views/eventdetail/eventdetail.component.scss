@@ -1,0 +1,156 @@
+@import '../../../styles.scss';
+
+h1,
+h2 {
+    font-family: 'Karma-SemiBold';
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+form {
+    width: 100%;
+}
+
+form label {
+    font-family: 'Karma-SemiBold';
+    display: block;
+    font-size: 1.25rem;
+    width: max-content;
+}
+
+form input,
+form select,
+form textarea {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.description {
+    width: 50%;
+}
+
+.img {
+    width: 23%;
+}
+
+form textarea {
+    width: 100%;
+    min-height: 241px;
+    resize: none;
+}
+
+form img {
+    width: 100%;
+    object-fit: cover;
+    height: 241px;
+}
+
+.form-container {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.description-img-bolets {
+    justify-content: space-between;
+}
+
+table {
+    width: 300px;
+    height: 239px;
+}
+
+th,
+td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+td:first-child {
+    font-weight: bold;
+}
+
+td:nth-child(2),
+td:nth-child(3) {
+    text-align: center;
+}
+
+.btn-verde {
+    background-color: $verde;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-verde:hover {
+    background-color: $verde-hover;
+}
+
+.btn-rojo {
+    background-color: $rojo;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-rojo:hover {
+    background-color: $rojo-hover;
+}
+
+.buttons {
+    display: flex;
+    justify-content: end;
+}
+
+@media screen and (max-width: 768px) {
+    .description-img-bolets {
+        flex-direction: column;
+    }
+
+    form textarea {
+        width: 300px;
+    }
+
+    .img {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    .bolets {
+        margin: 0;
+    }
+
+    form img {
+        width: 100%;
+        height: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .buttons {
+        margin-top: 16px;
+        justify-content: space-between;
+    }
+
+    p-skeleton {
+        display: flex;
+        width: 100%;
+    }
+}

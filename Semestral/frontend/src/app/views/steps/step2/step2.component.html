@@ -1,0 +1,31 @@
+<section class="form-container">
+    <label for="informacion">Información de compra</label>
+    <section class="flex-container">
+      <ng-container *ngIf="loading; else content">
+        <p-skeleton width="15rem" height="3rem" class="mr-3"></p-skeleton>
+        <p-skeleton width="15rem" height="3rem" class="mr-3"></p-skeleton>
+        <p-skeleton width="15rem" height="3rem" class="mr-3"></p-skeleton>
+      </ng-container>
+      <ng-template #content>
+        <div *ngFor="let boleto of boletosFiltrados; let i = index" class="mb-2 mr-7">
+          <p>Boleto #{{ i + 1 }}</p>
+          <label for="codAsiento">Tipo de asiento:
+            <span>
+              {{ boleto.Seccion }}
+            </span>
+          </label>
+          <label for="preAsiento">Precio de asiento:
+            <span>
+              ${{ boleto.Precio }}
+            </span>
+          </label>
+        </div>
+      </ng-template>
+    </section>
+    <div class="subtotal">
+      <p>Subtotal: ${{ subtotal.toFixed(2) }}</p>
+      <p>Impuesto (7%): ${{ impuesto.toFixed(2) }}</p>
+      <p>Total: ${{ total.toFixed(2) }}</p>
+    </div>
+  </section>
+  

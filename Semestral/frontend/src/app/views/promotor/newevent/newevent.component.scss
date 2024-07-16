@@ -1,0 +1,137 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+.container-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.space-between {
+    flex: 0 0 40px; // Añade espacio entre las tarjetas
+}
+
+.principal-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 2; // Hace la tarjeta principal más grande
+    min-width: 300px;
+}
+
+.secondary-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 1; // Hace la tarjeta secundaria más pequeña
+    min-width: 200px; // Ajusta el tamaño mínimo de la tarjeta secundaria
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #6c757d;
+}
+
+.upload-icon p {
+    margin-top: 10px;
+}
+
+.preview-image {
+    width: 277px;
+    height: auto;
+    margin: 0 auto 10px auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.event-info {
+    text-align: left;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.event-info p {
+    margin: 10px 0;
+}
+
+.event-name {
+    font-family: 'Karma-Bold';
+    font-size: 1.5rem;
+    color: #4b5563;
+    text-align: center;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    font-family: 'Karma-Regular';
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+.location-icon {
+    margin-right: 0.5rem;
+    color: #ffb700;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.event-date {
+    font-family: 'Karma-Bold';
+    font-size: 1.5rem;
+    color: #4b0082;
+}
+
+.btn-buy {
+    background-color: #e83e8c;
+    color: #fff;
+    font-family: 'Karma-Regular';
+    font-size: 1.125rem;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container-cards {
+        flex-direction: column;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-group {
+        margin-right: 0;
+    }
+
+    .space-between {
+        flex: 0 0 20px;
+    }
+
+    .footer {
+        flex-direction: column;
+    }
+}

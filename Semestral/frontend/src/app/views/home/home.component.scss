@@ -1,0 +1,63 @@
+@import '../../../styles.scss';
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card-footer {
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.card-disabled {
+    filter: brightness(50%);
+    position: relative;
+}
+
+.card-disabled::before {
+    content: "En espera de aprobación...";
+    position: absolute;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    top: 28%;
+    left: 50%;
+    width: 100%;
+    height: 56%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.card-rejected {
+    filter: brightness(50%);
+    position: relative;
+}
+
+.card-rejected::before {
+    content: "Evento rechazado";
+    position: absolute;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    top: 28%;
+    left: 50%;
+    width: 100%;
+    height: 56%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    font-size: 1.6rem;
+    color: $rojo;
+    font-weight: bold;
+    white-space: nowrap;
+}

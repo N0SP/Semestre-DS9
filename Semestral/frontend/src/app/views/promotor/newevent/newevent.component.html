@@ -1,0 +1,36 @@
+<div class="container-cards">
+  <div class="principal-card">
+      <h2 class="title">Información del Evento</h2>
+      <ng-container *ngIf="currentStep === 1">
+        <app-step1 (next)="nextStep()"></app-step1>
+      </ng-container>
+      <ng-container *ngIf="currentStep === 2">
+        <app-step2 (next)="nextStep()" (previous)="previousStep()"></app-step2>
+      </ng-container>
+  </div>
+  <div class="space-between"></div>
+
+  <div class="secondary-card">
+      <ng-container *ngIf="imageUrl; else defaultIcon">
+        <img [src]="imageUrl" alt="Preview Image" class="preview-image">
+      </ng-container>
+      <ng-template #defaultIcon>
+        <div class="upload-icon">
+          <fa-icon [icon]="['fas', 'cloud-upload-alt']"></fa-icon>
+          <p>Cargar Imagen</p>
+        </div>
+      </ng-template>
+      <div class="event-info">
+          <p class="event-name">{{ eventData.name || 'NOMBRE DEL EVENTO...' }}</p>
+          <hr>
+          <div class="location">
+            <fa-icon [icon]="['fas', 'map-marker-alt']" class="location-icon"></fa-icon>
+            <p>{{ eventData.place || 'LUGAR...' }}</p>
+          </div>
+          <div class="footer">
+            <p class="event-date"><strong>{{ eventData.startdate || 'FECHA' }}</strong></p>
+            <button type="button" class="btn btn-buy ">Comprar</button>
+          </div>
+      </div>
+  </div>
+</div>

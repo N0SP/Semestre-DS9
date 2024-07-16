@@ -1,0 +1,96 @@
+.contenedor {
+  background-image: url('../../../assets/concierto.jpg');
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 195px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formulario {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.formulario h1 {
+  font-family: 'Karma-Bold';
+  color: #333;
+  font-size: 1.75rem;
+  text-align: center;
+}
+
+.formulario label {
+  font-family: 'Karma-SemiBold';
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.formulario input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.formulario button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+  width: 100% !important;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-1-2 {
+  top: 50%;
+}
+
+.transform {
+  transform: translateY(-50%);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.lbl-register {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.lbl-register a {
+  color: #007bff;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .contenedor {
+    height: calc(100vh - 201px);
+  }
+
+  .formulario {
+    max-width: 90%;
+  }
+
+  .lbl-register {
+    display: flex !important;
+    flex-direction: column;
+  }
+}

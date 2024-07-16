@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+h1 {
+    font-family: 'Karma-Bold';
+    color: #333;
+    font-size: 1.75rem;
+    text-align: start;
+    margin-left: 1.625rem;
+}
+
+.btn-rojo {
+    background-color: $rojo;
+    width: 25%;
+    padding: 6px;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-rojo:hover {
+    background-color: $rojo-hover;
+}

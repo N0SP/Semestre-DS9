@@ -1,0 +1,72 @@
+<section class="contenedor">
+    <section class="title">
+        <h1 class="mb-5 mt-5">Lista de eventos</h1>
+    </section>
+
+    <section class="tabla m-2.5">
+        <p-table [value]="listaEventos" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="border px-4 py-2">ID</th>
+                    <th class="border px-4 py-2">Nombre</th>
+                    <th class="border px-4 py-2">Lugar</th>
+                    <th class="border px-4 py-2">Dia - Hora de inicio</th>
+                    <th class="border px-4 py-2">Dia - Hora de finalización</th>
+                    <th class="border px-4 py-2">Aprobar / Rechazar</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-evento>
+                <tr>
+                    <td class="border px-4 py-2">
+                        @if (loading) {
+                        <p-skeleton styleClass="mb-2"></p-skeleton>
+                        } @else {
+                        {{ evento.ID }}
+                        }
+                    </td>
+                    <td class="border px-4 py-2">
+                        @if (loading) {
+                        <p-skeleton styleClass="mb-2"></p-skeleton>
+                        } @else {
+                        {{ evento.Nombre }}
+                        }
+                    </td>
+
+                    <td class="border px-4 py-2">
+                        @if (loading) {
+                        <p-skeleton styleClass="mb-2"></p-skeleton>
+                        } @else {
+                        {{ evento.Lugar }}
+                        }
+                    </td>
+                    <td class="border px-4 py-2">
+                        @if (loading) {
+                        <p-skeleton styleClass="mb-2"></p-skeleton>
+                        } @else {
+                        {{ formatDate(evento.Dia_Hora_Inicio) }} - {{formatTime(evento.Dia_Hora_Inicio) }}
+                        }
+                    </td>
+                    <td class="border px-4 py-2">
+                        @if (loading) {
+                        <p-skeleton styleClass="mb-2"></p-skeleton>
+                        } @else {
+                        {{ formatDate(evento.Dia_Hora_Final) }} - {{formatTime(evento.Dia_Hora_Final) }}
+                        }
+                    </td>
+                    <td class="border px-4 py-2 button">
+                        @if(evento.Status == 0) {
+                        <button class="btn-azul" (click)="statusEvento(evento.ID)"><fa-icon
+                                [icon]="faEye"></fa-icon></button>
+                        }
+                        @if(evento.Status == 1) {
+                        <button class="btn-verde disabled"><fa-icon [icon]="faCheck"></fa-icon></button>
+                        }
+                        @if(evento.Status == 2) {
+                        <button class="btn-rojo disabled"><fa-icon [icon]="faTimes"></fa-icon></button>
+                        }
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </section>
+</section>

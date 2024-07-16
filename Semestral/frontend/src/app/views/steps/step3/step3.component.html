@@ -1,0 +1,25 @@
+<section class="form-container">
+    <label for="seleccion">Seleccione una opción de pago</label>
+    <section class="flex-container">
+      <div class="payment-options">
+        <div class="payment-option stripe" (click)="togglePaymentOption('stripe')"></div>
+        <div class="payment-option paypal" (click)="togglePaymentOption('paypal')"></div>
+        <div class="payment-option yappy" (click)="togglePaymentOption('yappy')"></div>
+      </div>
+  
+      <div class="payment-details" *ngIf="selectedPaymentOption === 'stripe'">
+        <!-- Detalles de Stripe -->
+        <h3>Detalles de Stripe</h3>
+        <p>Aquí van los detalles para pagar con Stripe.</p>
+      </div>
+      <div class="payment-details"  *ngIf="selectedPaymentOption === 'paypal'">
+        <div id="paypal-button-container" #paypalButtonContainer></div>
+      </div>
+      <div class="payment-details" *ngIf="selectedPaymentOption === 'yappy'">
+        <!-- Detalles de Yappy -->
+        <h3>Detalles de Yappy</h3>
+        <p>Aquí van los detalles para pagar con Yappy.</p>
+      </div>
+    </section>
+  </section>
+  

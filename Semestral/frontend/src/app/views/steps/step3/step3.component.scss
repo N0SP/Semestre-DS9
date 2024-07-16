@@ -1,0 +1,64 @@
+.form-container {
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+  }
+  
+  .form-container label {
+    font-family: 'Karma-SemiBold';
+    display: block;
+    font-size: 1.25rem;
+    width: max-content;
+  }
+  
+  .flex-container {
+    margin: 1rem;
+  }
+  
+  .payment-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .payment-option {
+    cursor: pointer;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.2s;
+  }
+  
+  .payment-option.stripe {
+    background-image: url('../../../../assets/payments/stripe.png');
+  }
+  
+  .payment-option.paypal {
+    background-image: url('../../../../assets/payments/PP_logo_h_200x51.png');
+  }
+  
+  .payment-option.yappy {
+    background-image: url('../../../../assets/payments/yappy.png');
+  }
+  
+  .payment-option:hover {
+    transform: scale(1.05);
+  }
+  
+  .payment-details {
+    margin-top: 1rem;
+    border-top: 1px solid #d1d5db;
+    padding-top: 1rem;
+  }
+
+  

@@ -1,0 +1,22 @@
+<!-- <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+  <label for="appointment">Selecciona fecha y hora:</label>
+  <input type="datetime-local" id="appointment" formControlName="appointmentDateTime">
+  <button type="submit">Guardar</button>
+</form> -->
+
+<section>
+  <h1>Preguntas frecuentes</h1>
+
+  <p-accordion>
+    @for(tab of tabs; track tab){
+      @if(this.userRol() === tab.ID_RolUsuario){
+        <p-accordionTab [header]="tab.Titulo">
+        <p class="m-0">
+            {{ tab.Contenido }}
+        </p>
+      </p-accordionTab>  
+      }
+       
+    }    
+  </p-accordion>
+</section>

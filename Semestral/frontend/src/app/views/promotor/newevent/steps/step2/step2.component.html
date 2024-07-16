@@ -1,0 +1,74 @@
+<form [formGroup]="form" (ngSubmit)="submitEvent()">
+  <div class="form-section">
+    <label class="section-label">Precio de boletos por sección</label>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="seat-price-platino">Platino</label>
+        <input type="number" class="form-control" id="seatpriceplatino" formControlName="seatpriceplatino" placeholder="Precio Platino" required>
+        <div *ngIf="form.get('seatpriceplatino')?.invalid && form.get('seatpriceplatino')?.touched">
+          <small>El precio platino es requerido.</small>
+        </div>    
+      </div>
+      <div class="form-group">
+        <label for="seat-price-gold">Gold</label>
+        <input type="number" class="form-control" id="seatpricegold" formControlName="seatpricegold" placeholder="Precio Gold" required>
+        <div *ngIf="form.get('seatpricegold')?.invalid && form.get('seatpricegold')?.touched">
+          <small>El precio gold es requerido.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="seat-price-silver">Silver</label>
+        <input type="number" class="form-control" id="seatpricesilver" formControlName="seatpricesilver" placeholder="Precio Silver" required>
+        <div *ngIf="form.get('seatpricesilver')?.invalid && form.get('seatpricesilver')?.touched">
+          <small>El precio silver es requerido.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="seat-price-general">General</label>
+        <input type="number" class="form-control" id="seatpricegeneral" formControlName="seatpricegeneral" placeholder="Precio General" required>
+        <div *ngIf="form.get('seatpricegeneral')?.invalid && form.get('seatpricegeneral')?.touched">
+          <small>El precio general es requerido.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label class="section-label">Cantidad de boletos por sección</label>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="seat-quantity-platino">Platino</label>
+        <input type="number" class="form-control" id="seatquantityplatino" formControlName="seatquantityplatino" placeholder="Cantidad Platino" required>
+        <div *ngIf="form.get('seatquantityplatino')?.invalid && form.get('seatquantityplatino')?.touched">
+          <small>La cantidad platino es requerida.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="seat-quantity-gold">Gold</label>
+        <input type="number" class="form-control" id="seatquantitygold" formControlName="seatquantitygold" placeholder="Cantidad Gold" required>
+        <div *ngIf="form.get('seatquantitygold')?.invalid && form.get('seatquantitygold')?.touched">
+          <small>La cantidad gold es requerida.</small>
+        </div>    
+      </div>
+      <div class="form-group">
+        <label for="seat-quantity-silver">Silver</label>
+        <input type="number" class="form-control" id="seatquantitysilver" formControlName="seatquantitysilver" placeholder="Cantidad Silver" required>
+        <div *ngIf="form.get('seatquantitysilver')?.invalid && form.get('seatquantitysilver')?.touched">
+          <small>La cantidad silver es requerida.</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="seat-quantity-general">General</label>
+        <input type="number" class="form-control" id="seatquantitygeneral" formControlName="seatquantitygeneral" placeholder="Cantidad General" required>
+        <div *ngIf="form.get('seatquantitygeneral')?.invalid && form.get('seatquantitygeneral')?.touched">
+          <small>La cantidad silver es requerida.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button type="button" (click)="onPrevious()" class="btnvolver"><fa-icon [icon]="['fas', 'arrow-left']"></fa-icon> Volver</button>
+    <button type="submit" class="btn">Publicar</button>
+  </div>
+</form>

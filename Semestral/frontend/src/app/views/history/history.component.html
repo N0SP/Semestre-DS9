@@ -1,0 +1,39 @@
+<h1 class="mb-5 mt-5">Historial de compra</h1>
+
+<p-dataView #dv [value]="lista">
+    <ng-template pTemplate="list" let-lista>
+        <div class="grid grid-nogutter">
+            <div class="col-12" *ngFor="let item of lista; let first = first" class="col-12 card">
+                <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3 small" [ngClass]="{ 'border-top-1 surface-border': !first }">
+                    <div class="md:w-10rem relative max-w-40 min-w-28">
+                        <img class="block xl:block mx-auto border-round w-full" [src]="item.Foto" [alt]="item.NombreEvento" />                        
+                    </div>
+                    <div class="flex flex-column md:flex-row justify-between md:align-items-center flex-1 gap-4 small">
+                        <div class="flex flex-row md:flex-column justify-content-between align-items-start gap-2">
+                            <div class="flex flex-col justify-between">
+                                <div>
+                                    <span class="font-medium text-secondary text-sm">Transaccion #{{ item.ID_Transaccion }}</span>
+                                    <div class="text-lg font-medium text-900 mt-2">Evento: {{ item.NombreEvento }}</div>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-medium text-secondary text-sm">Email: {{ item.EmailPago }}</span>
+                                    <span class="font-medium text-secondary text-sm">Usuario: {{ item.UsuarioPago }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-end justify-between small">
+                            <span class="text-xl font-semibold text-900">{{ '$' + item.Pago }}</span>
+
+                            <!-- <qr-code [value]="qrData" [size]="100" errorCorrectionLevel="M"></qr-code> -->
+                            <qr-code [value]="item.qrData" [size]="100" errorCorrectionLevel="M"></qr-code>
+
+                            <div class="flex flex-row-reverse md:flex-row gap-2">
+                                <span class="text-900 font-medium text-sm">{{ item.Fecha | date:'fullDate' }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>

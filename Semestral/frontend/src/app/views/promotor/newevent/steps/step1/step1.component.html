@@ -1,0 +1,51 @@
+<form [formGroup]="form">
+  <div class="form-row">
+      <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Nombre del Evento" required>
+          <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+            <small>El nombre es requerido.</small>
+          </div>
+        </div>
+      <div class="form-group">
+          <label for="place">Lugar</label>
+          <input type="text" class="form-control" id="place" formControlName="place" placeholder="Lugar" required>
+          <div *ngIf="form.get('place')?.invalid && form.get('place')?.touched">
+            <small>El lugar es requerido.</small>
+          </div>
+        </div>
+  </div>
+  <div class="form-row">
+      <div class="form-group">
+          <label for="start-date">Día/hora de inicio</label>
+          <input type="datetime-local" class="form-control" id="startdate" formControlName="startdate" required>
+          <div *ngIf="form.get('startdate')?.invalid && form.get('startdate')?.touched">
+            <small>La fecha de inicio es requerida.</small>
+          </div>
+        </div>
+      <div class="form-group">
+          <label for="end-date">Día/hora de finalización</label>
+          <input type="datetime-local" class="form-control" id="enddate" formControlName="enddate" required>
+          <div *ngIf="form.get('enddate')?.invalid && form.get('enddate')?.touched">
+            <small>La fecha de fin es requerida.</small>
+          </div>
+        </div>
+  </div>
+  <div class="form-group">
+      <label for="details">Detalles</label>
+      <textarea class="form-control" id="details" formControlName="details" placeholder="Detalles" required></textarea>
+      <div *ngIf="form.get('details')?.invalid && form.get('details')?.touched">
+        <small>Los detalles son requeridos.</small>
+      </div>  
+    </div>
+  <div class="form-group">
+      <label for="image">Foto: Subir Imagen png/jpg/jpeg</label>
+      <input type="file" class="form-control-file" id="image" (change)="onFileChange($event)" required>
+      <div *ngIf="form.get('image')?.invalid && form.get('image')?.touched">
+        <small>La imagen es requerida.</small>
+      </div>
+    </div>
+  <div class="form-row">
+      <button type="button" (click)="onNext()" class="btn upload-btn">Siguiente<i></i><fa-icon [icon]="['fas', 'arrow-right']"></fa-icon></button>
+  </div>
+</form>

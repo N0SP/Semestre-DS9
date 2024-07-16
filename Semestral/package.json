@@ -1,0 +1,19 @@
+{
+  "name": "Eventazo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:frontend\" \"pnpm run dev:backend\"",
+    "dev:frontend": "cd frontend && pnpm start",
+    "dev:backend": "cd backend && pnpm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "Eventazo": "link:C:/Users/Aldai/OneDrive/Documentos/Repositorios/Eventazo",
+    "concurrently": "^6.5.1"
+  }
+}

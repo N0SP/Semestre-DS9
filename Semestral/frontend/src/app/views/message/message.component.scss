@@ -1,0 +1,106 @@
+.contenedor {
+    background-image: url('../../../assets/concierto.jpg');
+    background-size: cover;
+    background-position: center;
+    // height: calc(100vh - 195px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    background-color: rgba(255, 255, 255, 1);
+    max-width: 60%;
+    width: 100%;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.formulario h1 {
+    font-family: 'Karma-Bold';
+    color: #333;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.formulario label {
+    font-family: 'Karma-SemiBold';
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.formulario input,
+.formulario select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.formulario div textarea {
+    width: 100%;
+    resize: none;
+    font-size: 1rem;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.w-full-med {
+    width: 98% !important;
+}
+
+.w-full {
+    width: 99% !important;
+}
+
+.flex div {
+    width: 50%;
+}
+
+.div-button {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    // .contenedor {
+    //     height: calc(100vh - 20px);
+    // }
+
+    .formulario {
+        max-width: 90%;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    .flex div {
+        width: 100%;
+    }
+
+    .formulario input,
+    .formulario select {
+        width: 100%;
+    }
+
+    .w-full {
+        width: 100% !important;
+    }
+}

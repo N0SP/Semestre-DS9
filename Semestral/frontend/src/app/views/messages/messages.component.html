@@ -1,0 +1,62 @@
+<section class="contenedor">
+    <section class="title">
+        <h1 class="mb-5 mt-5">@if(this.userRol() === 1){ Lista de mensajes } @else{ Mensajes }</h1>
+    </section>
+
+    <section class="tabla m-2.5">
+        <p-table [value]="listaMessages" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5, 10, 20]">
+            <ng-template pTemplate="header">
+                <tr>
+                    @if(this.userRol() === 1){
+                        <th class="border px-4 py-2">ID</th>
+                        <th class="border px-4 py-2">Nombre del usuario</th>
+                        <th class="border px-4 py-2">Correo</th>
+                        <th class="border px-4 py-2">Asunto</th>
+                        <th class="border px-4 py-2">Detalle del mensaje</th>
+                        <th class="border px-4 py-2">Acciones</th>
+                    } @else {
+                        <th class="border px-4 py-2">ID</th>
+                        <th class="border px-4 py-2">Asunto</th>
+                        <th class="border px-4 py-2">Detalle del mensaje</th>
+                        <th class="border px-4 py-2">Respuesta</th>
+                    }
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-messages>
+                <tr>
+                    @if(this.userRol() === 1){
+                        <td class="border px-4 py-2">{{ messages.ID }}</td>
+                        <td class="border px-4 py-2">{{ messages.Nombre + ' ' + messages.Apellido }}</td>
+                        <td class="border px-4 py-2">{{ messages.Correo }}</td>
+                        <td class="border px-4 py-2">{{ messages.Asunto }}</td>
+                        <td class="border px-4 py-2">{{ messages.Detalles }}</td>
+                        <td class="border px-4 py-2">
+                        @if(messages.Status == 0) {
+                            <button class="btn-azul" (click)="statusMessage(messages.ID)"><fa-icon [icon]="faEye"></fa-icon></button>
+                        }
+                        @if(messages.Status == 1) {
+                            <button class="btn-verde disabled"><fa-icon [icon]="faCheck"></fa-icon></button>
+                        }
+                        @if(messages.Status == 2) {
+                            <button class="btn-rojo disabled"><fa-icon [icon]="faTimes"></fa-icon></button>
+                        }
+                    </td>
+                    } @else {
+                        <td class="border px-4 py-2">{{ messages.ID }}</td>
+                        <td class="border px-4 py-2">{{ messages.Asunto }}</td>
+                        <td class="border px-4 py-2">{{ messages.Detalles }}</td>
+                        <td class="border px-4 py-2">
+                        @if(messages.Status === 1){
+                            {{ messages.Respuesta }}
+                        } @else {
+                            Mensaje por responder...
+                        }
+                    </td>
+                    }
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+    </section>
+</section>

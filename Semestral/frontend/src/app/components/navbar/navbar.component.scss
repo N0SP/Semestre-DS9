@@ -1,0 +1,57 @@
+img {
+    width: auto;
+    height: 50px;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.fa-icon {
+    margin-right: 6px;
+}
+
+.fa-icon-user {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+}
+
+::ng-deep div.ng-tns-c3756965041-2 {
+    left: -16px !important;
+}
+
+::ng-deep input.p-element {
+    background-color: #F9FAFB;
+}
+
+::ng-deep .p-menuitem-separator {
+    border-top: 1px solid #e2e8f0;
+}
+
+
+@media (max-width: 768px) {
+    .ng-start {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        left: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 100%;
+    }
+
+    .ng-items {
+        z-index: 1000;
+    }
+
+    img {
+        height: 85%;
+        padding: 0;
+    }
+
+    .searchbar {
+        display: none;
+    }
+}

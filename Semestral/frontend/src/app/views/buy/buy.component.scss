@@ -1,0 +1,113 @@
+@import '../../../styles.scss';
+
+.buy {
+    display: flex;
+}
+
+.steps {
+    width: 75%;
+}
+
+.card {
+    width: 25%;
+    display: grid;
+    align-content: center;
+}
+
+p-steps {
+    pointer-events: none;
+}
+
+.navigation-buttons {
+    margin-right: 1rem;
+    display: flex;
+    justify-content: end;
+
+    button {
+        margin: 0;
+    }
+}
+
+.navigation-buttons-otros {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        margin: 0;
+    }
+}
+
+.btn-azul {
+    background-color: $azul;
+}
+
+.btn-azul:hover {
+    background-color: $azul-hover;
+}
+
+.btn-morado {
+    background-color: $morado;
+}
+
+.btn-morado:hover {
+    background-color: $morado-hover;
+}
+
+.btn-dorado {
+    background-color: $dorado;
+}
+
+.btn-dorado:hover {
+    background-color: $dorado-hover;
+}
+
+::ng-deep .main-content {
+    display: grid;
+    align-content: center;
+}
+
+::ng-deep .p-steps-title {
+    margin: 0;
+}
+
+app-step1 {
+    max-height: 1152px;
+}
+
+// agrega la variable como minimo desktop
+@media (max-width: 1366px) {
+    .steps {
+        width: 70%;
+    }
+
+    .card {
+        width: 30%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .steps {
+        width: 65%;
+    }
+
+    .card {
+        width: 45%;
+    }
+}
+
+// agrega la variable para le modo movil
+@media (max-width: 890px) {
+    .card {
+        display: none;
+    }
+
+    .steps {
+        width: 100%;
+    }
+
+    ::ng-deep .main-content {
+        margin-top: 1rem;
+    }
+}

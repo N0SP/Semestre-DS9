@@ -1,0 +1,153 @@
+.contenedor {
+    background-image: url('../../../assets/concierto.jpg');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 195px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    max-width: 60%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.formulario h1 {
+    font-family: 'Karma-Bold';
+    color: #333;
+    font-size: 1.75rem;
+    text-align: center;
+}
+
+.formulario label {
+    font-family: 'Karma-SemiBold';
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.formulario input,
+.formulario select {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.flex div {
+    width: 50%;
+}
+
+.div-button {
+    // display: flex;
+    // align-items: center;
+    // align-items: start;
+    // margin-top: 12px;
+    width: 100% !important;
+}
+
+.view-password {
+    display: flex;
+    align-items: center;
+}
+
+.view-password input {
+    width: 1rem !important;
+    margin: 0 10px 0 0;
+}
+
+.view-password label {
+    margin: 0;
+}
+
+.lbl-login {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.lbl-login a {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.relative {
+    position: relative;
+    width: 100% !important;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.top-1-2 {
+    top: 50%;
+}
+
+fa-icon {
+    right: 2rem;
+}
+
+.transform {
+    transform: translateY(-50%);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.pr-10 {
+    padding-right: 2.5rem;
+}
+
+
+@media (max-width: 768px) {
+    .contenedor {
+        height: calc(100vh - 80px);
+    }
+
+    .formulario {
+        max-width: 90%;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    .flex div {
+        width: 100%;
+    }
+
+    .formulario input,
+    .formulario select {
+        width: 100%;
+    }
+
+    fa-icon {
+        right: 0.75rem;
+    }
+
+    .lbl-login {
+        display: flex !important;
+        flex-direction: column;
+    }
+}
